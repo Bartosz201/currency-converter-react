@@ -11,14 +11,13 @@ const Form = () => {
         outCurrency: "PLN",
     })
     const [newAmout, setNewAmout] = useState()
+    const [inCurrency, setInCurrency] = useState("USD")
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        setCalculationData(calculationData => ({ ...calculationData, inAmout: newAmout }))
+        setCalculationData(calculationData => ({ ...calculationData, inCurrency, inAmout: newAmout }))
     }
-
-
-
+    const onSelectInCurrency = ({ target }) => setInCurrency(target.value)
 
     return (
         <form className="form" onSubmit={onFormSubmit}>
@@ -39,9 +38,9 @@ const Form = () => {
                     <li className="form__listItem">
                         <label>
                             <span className="form__labelText">Waluta wyjściowa:</span>
-                            <select className="form__input">
+                            <select value={inCurrency} onChange={onSelectInCurrency} className="form__input">
                                 {currencys.map(currency => (
-                                    <option key={currency.abbreviation} selected={currency.abbreviation === "USD" ? true : false}>
+                                    <option value={currency.abbreviation} key={currency.abbreviation}>
                                         {currency.abbreviation} - {currency.name}</option>
                                 ))}
                             </select>
