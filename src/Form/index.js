@@ -1,29 +1,7 @@
 import { useState } from "react";
 import "./style.css"
+import currencys from "../currencys";
 
-const currencys = [
-    {
-        name: "polski złoty",
-        abbreviation: "PLN",
-        toUSD: 0.2284286,
-    },
-    {
-        name: "dolar amerykański",
-        abbreviation: "USD",
-        toUSD: 1,
-    },
-    {
-        name: "euro",
-        abbreviation: "EUR",
-        toUSD: 1.06855,
-    },
-    {
-        name: "funt brytyjski",
-        abbreviation: "GBP",
-        toUSD: 1.05192,
-    },
-    
-]
 
 const Form = () => {
     const [calculationData, setCalculationData] = useState({
@@ -40,6 +18,8 @@ const Form = () => {
     }
 
 
+
+
     return (
         <form className="form" onSubmit={onFormSubmit}>
             <fieldset className="form__fieldset">
@@ -49,10 +29,10 @@ const Form = () => {
                         <label>
                             <span className="form__labelText">Waluta wejściowa:</span>
                             <select className="form__input">
-                                <option value="PLN" selected>PLN - polski złoty</option>
-                                <option value="USD">USD - dolar amerykański</option>
-                                <option value="EUR">EUR - euro</option>
-                                <option value="GBP">GBP - funt brytyjski</option>
+                                {currencys.map(currency => (
+                                    <option key={currency.abbreviation}>
+                                        {currency.abbreviation} - {currency.name}</option>
+                                ))}
                             </select>
                         </label>
                     </li>
@@ -60,10 +40,10 @@ const Form = () => {
                         <label>
                             <span className="form__labelText">Waluta wyjściowa:</span>
                             <select className="form__input">
-                                <option value="PLN">PLN - polski złoty</option>
-                                <option value="USD" selected>USD - dolar amerykański</option>
-                                <option value="EUR">EUR - euro</option>
-                                <option value="GBP">GBP - funt brytyjski</option>
+                                {currencys.map(currency => (
+                                    <option key={currency.abbreviation} selected={currency.abbreviation === "USD" ? true : false}>
+                                        {currency.abbreviation} - {currency.name}</option>
+                                ))}
                             </select>
                         </label>
                     </li>
