@@ -3,7 +3,7 @@
 }
 
 .form__fieldset {
-    
+
     border-color: hsl(0, 0%, 30%);
     border-radius: 10px;
     border-width: 3px;
@@ -23,6 +23,7 @@
 .form__list {
     list-style: none;
     font-weight: 700;
+    padding: 0;
 }
 
 .form__listItem {
@@ -32,10 +33,10 @@
 .form__labelText {
     width: 170px;
     display: inline-block;
-    
+
 }
 
-.form__buttonContainer{
+.form__buttonContainer {
     text-align: center;
 }
 
@@ -72,7 +73,7 @@
 }
 
 @media (max-width: 767px) {
-    .form__listItem--result{
+    .form__listItem--result {
         display: grid;
     }
 }
