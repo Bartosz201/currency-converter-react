@@ -1,23 +1,31 @@
 import { useState } from "react";
 import "./style.css"
 import currencys from "../currencys";
-
+import Result from "../Result";
 
 const Form = () => {
-    const [calculationData, setCalculationData] = useState({
-        inAmout: 100,
-        inCurrency: "PLN",
-        outAmout: 100,
-        outCurrency: "PLN",
-    })
-    const [newAmout, setNewAmout] = useState()
-    const [inCurrency, setInCurrency] = useState("USD")
+    const [inAmout, setInAmout] = useState()
+    const [inCurrency, setInCurrency] = useState("PLN")
+    const [outCurrency, setOutCurrency] = useState("USD")
+    const [result, setResult] = useState()
+    const [showResult, setShowResult] = useState({})
 
+    const onSelectInCurrency = ({ target }) => setInCurrency(target.value)
+    const onSelectOutCurrency = ({ target }) => setOutCurrency(target.value)
+    const calculateResult = () => {
+        setResult(result => (
+            (inAmout
+                *
+                currencys.find(currency => currency.abbreviation === inCurrency).toUSD))
+            /
+            currencys.find(currency => currency.abbreviation === outCurrency).toUSD)
+
+    }
     const onFormSubmit = (event) => {
         event.preventDefault();
-        setCalculationData(calculationData => ({ ...calculationData, inCurrency, inAmout: newAmout }))
+        calculateResult()
+        setShowResult(showResult => ({ inAmout, inCurrency, outCurrency }))
     }
-    const onSelectInCurrency = ({ target }) => setInCurrency(target.value)
 
     return (
         <form className="form" onSubmit={onFormSubmit}>
@@ -27,9 +35,9 @@ const Form = () => {
                     <li className="form__listItem">
                         <label>
                             <span className="form__labelText">Waluta wejściowa:</span>
-                            <select className="form__input">
+                            <select value={inCurrency} onChange={onSelectInCurrency} className="form__input">
                                 {currencys.map(currency => (
-                                    <option key={currency.abbreviation}>
+                                    <option value={currency.abbreviation} key={currency.abbreviation}>
                                         {currency.abbreviation} - {currency.name}</option>
                                 ))}
                             </select>
@@ -38,7 +46,7 @@ const Form = () => {
                     <li className="form__listItem">
                         <label>
                             <span className="form__labelText">Waluta wyjściowa:</span>
-                            <select value={inCurrency} onChange={onSelectInCurrency} className="form__input">
+                            <select value={outCurrency} onChange={onSelectOutCurrency} className="form__input">
                                 {currencys.map(currency => (
                                     <option value={currency.abbreviation} key={currency.abbreviation}>
                                         {currency.abbreviation} - {currency.name}</option>
@@ -50,8 +58,8 @@ const Form = () => {
                         <label>
                             <span className="form__labelText">Wprowadź kwotę:</span>
                             <input
-                                value={newAmout}
-                                onChange={(event) => setNewAmout(event.target.value)}
+                                value={inAmout}
+                                onChange={(event) => setInAmout(event.target.value)}
                                 className="form__input"
                                 type="number"
                                 min="0"
@@ -63,9 +71,7 @@ const Form = () => {
                     <li className="form__listItem">
                         <span className="form__result">Wynik: </span>
                         <strong>
-                            {calculationData.inAmout} {calculationData.inCurrency}
-                            =
-                            {calculationData.outAmout} {calculationData.outCurrency}
+                            <Result showResult={showResult} result={result} />
                         </strong>
                     </li>
                 </ul>
