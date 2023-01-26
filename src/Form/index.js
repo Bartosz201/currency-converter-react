@@ -1,6 +1,30 @@
 import { useState } from "react";
 import "./style.css"
 
+const currencys = [
+    {
+        name: "polski złoty",
+        abbreviation: "PLN",
+        toUSD: 0.2284286,
+    },
+    {
+        name: "dolar amerykański",
+        abbreviation: "USD",
+        toUSD: 1,
+    },
+    {
+        name: "euro",
+        abbreviation: "EUR",
+        toUSD: 1.06855,
+    },
+    {
+        name: "funt brytyjski",
+        abbreviation: "GBP",
+        toUSD: 1.05192,
+    },
+    
+]
+
 const Form = () => {
     const [calculationData, setCalculationData] = useState({
         inAmout: 100,
@@ -8,10 +32,16 @@ const Form = () => {
         outAmout: 100,
         outCurrency: "PLN",
     })
+    const [newAmout, setNewAmout] = useState()
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        setCalculationData(calculationData => ({ ...calculationData, inAmout: newAmout }))
+    }
 
 
     return (
-        <form className="form">
+        <form className="form" onSubmit={onFormSubmit}>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">Kalkulator Walut</legend>
                 <ul className="form__list">
@@ -40,13 +70,23 @@ const Form = () => {
                     <li className="form__listItem">
                         <label>
                             <span className="form__labelText">Wprowadź kwotę:</span>
-                            <input className="form__input" type="number" min="0" step="0.01" required />
+                            <input
+                                value={newAmout}
+                                onChange={(event) => setNewAmout(event.target.value)}
+                                className="form__input"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                required
+                            />
                         </label>
                     </li>
                     <li className="form__listItem">
                         <span className="form__result">Wynik: </span>
                         <strong>
-                            {calculationData.inAmout} {calculationData.inCurrency} = {calculationData.outAmout} {calculationData.outCurrency}
+                            {calculationData.inAmout} {calculationData.inCurrency}
+                            =
+                            {calculationData.outAmout} {calculationData.outCurrency}
                         </strong>
                     </li>
                 </ul>
