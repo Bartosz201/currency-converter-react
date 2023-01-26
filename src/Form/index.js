@@ -68,7 +68,7 @@ const Form = () => {
                             />
                         </label>
                     </li>
-                    <li className="form__listItem">
+                    <li className="form__listItem form__listItem--result">
                         <span className="form__result">Wynik: </span>
                         <strong>
                             <Result showResult={showResult} result={result} />
