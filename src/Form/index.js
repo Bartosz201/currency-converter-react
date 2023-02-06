@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./style.css";
 import currencies from "../currencies";
 import Result from "../Result";
+import Clock from "../Clock";
 
 const Form = () => {
     const [inAmout, setInAmout] = useState();
@@ -31,6 +32,7 @@ const Form = () => {
         <form className="form" onSubmit={onFormSubmit}>
             <fieldset className="form__fieldset">
                 <legend className="form__legend">Kalkulator Walut</legend>
+                <Clock/>
                 <ul className="form__list">
                     <li className="form__listItem">
                         <label>

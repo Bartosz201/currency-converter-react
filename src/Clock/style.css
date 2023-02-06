@@ -1,0 +1,13 @@
+.clock {
+    text-align: end;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: #515151;
+}
+
+@media (max-width: 767px) {
+    .clock {
+        text-align: center;
+        font-size: 12px;
+    }
+}
