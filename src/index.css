@@ -16,6 +16,6 @@ body {
   padding: 10px;
   background-image: url("./backgroundEuro.jpg");
   background-size: 1600px auto;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
 }
