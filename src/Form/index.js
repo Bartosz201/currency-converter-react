@@ -1,17 +1,17 @@
 import { useState } from "react";
-import "./style.css"
+import "./style.css";
 import currencys from "../currencys";
 import Result from "../Result";
 
 const Form = () => {
-    const [inAmout, setInAmout] = useState()
-    const [inCurrency, setInCurrency] = useState("PLN")
-    const [outCurrency, setOutCurrency] = useState("USD")
-    const [result, setResult] = useState()
-    const [showResult, setShowResult] = useState({})
+    const [inAmout, setInAmout] = useState();
+    const [inCurrency, setInCurrency] = useState("PLN");
+    const [outCurrency, setOutCurrency] = useState("USD");
+    const [result, setResult] = useState();
+    const [showResult, setShowResult] = useState({});
 
-    const onSelectInCurrency = ({ target }) => setInCurrency(target.value)
-    const onSelectOutCurrency = ({ target }) => setOutCurrency(target.value)
+    const onSelectInCurrency = ({ target }) => setInCurrency(target.value);
+    const onSelectOutCurrency = ({ target }) => setOutCurrency(target.value);
     const calculateResult = () => {
         setResult(result => (
             (inAmout
@@ -20,12 +20,12 @@ const Form = () => {
             /
             currencys.find(currency => currency.abbreviation === outCurrency).toUSD)
 
-    }
+    };
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult()
-        setShowResult(showResult => ({ inAmout, inCurrency, outCurrency }))
-    }
+        calculateResult();
+        setShowResult(showResult => ({ inAmout, inCurrency, outCurrency }));
+    };
 
     return (
         <form className="form" onSubmit={onFormSubmit}>
@@ -83,4 +83,4 @@ const Form = () => {
     )
 };
 
-export default Form
+export default Form;

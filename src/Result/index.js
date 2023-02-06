@@ -5,8 +5,8 @@ const Result = ({ showResult, result }) => {
                 {showResult.inAmout} {showResult.inCurrency} = {result.toFixed(2)} {showResult.outCurrency}
             </>
         )
-    }
+    };
     return
-}
+};
 
-export default Result
+export default Result;
