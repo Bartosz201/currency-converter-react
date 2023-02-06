@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./style.css";
-import currencys from "../currencys";
+import currencies from "../currencies";
 import Result from "../Result";
 
 const Form = () => {
@@ -16,9 +16,9 @@ const Form = () => {
         setResult(result => (
             (inAmout
                 *
-                currencys.find(currency => currency.abbreviation === inCurrency).toUSD))
+                currencies.find(currency => currency.abbreviation === inCurrency).toUSD))
             /
-            currencys.find(currency => currency.abbreviation === outCurrency).toUSD)
+            currencies.find(currency => currency.abbreviation === outCurrency).toUSD)
 
     };
     const onFormSubmit = (event) => {
@@ -36,7 +36,7 @@ const Form = () => {
                         <label>
                             <span className="form__labelText">Waluta wejściowa:</span>
                             <select value={inCurrency} onChange={onSelectInCurrency} className="form__input">
-                                {currencys.map(currency => (
+                                {currencies.map(currency => (
                                     <option value={currency.abbreviation} key={currency.abbreviation}>
                                         {currency.abbreviation} - {currency.name}</option>
                                 ))}
@@ -47,7 +47,7 @@ const Form = () => {
                         <label>
                             <span className="form__labelText">Waluta wyjściowa:</span>
                             <select value={outCurrency} onChange={onSelectOutCurrency} className="form__input">
-                                {currencys.map(currency => (
+                                {currencies.map(currency => (
                                     <option value={currency.abbreviation} key={currency.abbreviation}>
                                         {currency.abbreviation} - {currency.name}</option>
                                 ))}
