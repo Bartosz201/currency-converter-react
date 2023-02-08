@@ -11,14 +11,15 @@ const Clock = () => {
             clearInterval(intervalId);
         };
     }, []);
+    const FormatedTime = time.toLocaleString(undefined,
+        {
+            weekday: "long", day: "numeric", month: "long",
+            hour: "numeric", minute: "2-digit", second: "2-digit"
+        })
 
     return (
         <p className="clock">
-            Dzisiaj jest {time.toLocaleString(undefined,
-                {
-                    weekday: "long", day: "numeric", month: "long",
-                    hour: "numeric", minute: "2-digit", second: "2-digit"
-                })}
+            Dzisiaj jest {FormatedTime}
         </p>
     );
 };
