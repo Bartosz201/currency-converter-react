@@ -1,5 +1,5 @@
 # Currency converter
-![Wygląd kalkulatora walut](https://i.postimg.cc/rmtg3Wy8/Nowy-obraz-mapy-bitowej-3.png)
+![webView.png](https://i.postimg.cc/T1zWsQRQ/webView.png)
 
 ## Demo
 https://bartosz201.github.io/currency-converter-react/
