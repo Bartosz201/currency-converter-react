@@ -15,7 +15,7 @@ body {
   font-family: 'Lato', sans-serif;
   padding: 10px;
   background-image: url("./backgroundEuro.jpg");
-  background-size: 1600px auto;
-  background-repeat: repeat;
-  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }

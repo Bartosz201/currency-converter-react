@@ -9,5 +9,5 @@ export const Paragraph = styled.p`
     @media (max-width: 767px) {
         text-align: center;
         font-size: 12px;
-}
+    }
 `;
