@@ -1,20 +1,24 @@
 # Currency converter
-![webView.png](https://i.postimg.cc/T1zWsQRQ/webView.png)
+[![webView.png](https://i.postimg.cc/7ZLJ1FSL/webView.png)](https://postimg.cc/ZC1q4D7k)
 
 ## Demo
 https://bartosz201.github.io/currency-converter-react/
 
 ## Description
-It is simple currency calculator where you can calcuate rates of four currency: PLN, USD, EUR and GBP. You must only choose currency, write amount in and click on button "Przelicz".
+It is simple currency calculator where you can calcuate rates from exchangerate.host API. You must only choose currency, write amount in and click on button "Przelicz".
 
 ## Used Technologies:
 - HTML
 - CSS
 - Java Script
+- ES6
 - Open Graph
+- Grid
+- React
+- Styled-components
+- Axios
 
 ## Used conventions:
-- BEM
 - Immutability
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
