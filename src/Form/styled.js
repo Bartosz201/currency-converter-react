@@ -83,3 +83,26 @@ export const Button = styled.button`
         background-color: hsl(120, 100%, 35%);
     }
 `;
+
+export const Loading = styled.p`
+    height: 211px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    @media (max-width: 767px) {
+        height: 267px;
+        }
+`;
+
+export const Failure = styled.p`
+    height: 211px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: red;
+    @media (max-width: 767px) {
+        height: 267px;
+        }
+`;
